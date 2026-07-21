@@ -1,0 +1,16 @@
+`timescale 1ns / 1ps
+
+module UPDOWNcounter_tb;
+reg clk , rst , mode;
+wire [3:0]Q;
+
+UPDOWNcounter uut ( clk , rst , mode, Q);
+always #5 clk = ~clk;
+initial
+begin
+clk=0;rst=1;mode=1;
+#10 rst = 0;
+#90 mode = 0;
+#200 $finish ;
+end
+endmodule
